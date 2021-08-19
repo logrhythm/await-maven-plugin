@@ -140,7 +140,7 @@
                 </executions>
             </plugin>
 
-            <!-- maven deploy replacement -->
+            <!-- maven deploy replacement
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -181,6 +181,7 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
         </plugins>
     </build>
 
