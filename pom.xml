@@ -15,33 +15,16 @@
     <url>https://github.com/slem1/await-maven-plugin</url>
 
     <properties>
-        <maven-plugin-annotation.version>3.4</maven-plugin-annotation.version>
-        <maven-plugin-api.version>3.0</maven-plugin-api.version>
         <junit.version>4.12</junit.version>
         <mockito.version>3.8.0</mockito.version>
         <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-        <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <maven-plugin-annotation.version>3.4</maven-plugin-annotation.version>
+        <maven-plugin-api.version>3.0</maven-plugin-api.version>
+        <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <scm>
-        <connection>scm:git:git://github.com/slem1/await-maven-plugin.git</connection>
-        <developerConnection>scm:git:ssh://github.com:slem1/await-maven-plugin.git</developerConnection>
-        <url>http://github.com/slem1/await-maven-plugin/tree/master</url>
-    </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencies>
 
@@ -138,8 +121,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>${maven-plugin-plugin.version}</version>
             </plugin>
+
         </plugins>
     </build>
 
