@@ -1,5 +1,6 @@
 package com.github.slem1.await;
 
+import java.nio.charset.StandardCharsets;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
