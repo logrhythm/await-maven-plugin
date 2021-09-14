@@ -1,10 +1,11 @@
 package com.github.slem1.await;
 
+import java.nio.charset.StandardCharsets;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -54,6 +55,7 @@ public class HttpService implements Service {
      *
      * @param url        the url of the service to connect to.
      * @param statusCode the expected http response status code.
+     * @param skipSSLCertVerification whether ssl certificate verification should be skipped
      */
     public HttpService(URL url, Integer statusCode, boolean skipSSLCertVerification) {
 
@@ -91,7 +93,7 @@ public class HttpService implements Service {
                 urlConnection.setRequestProperty("method", "GET");
                 if(null != url.getUserInfo()){
                     urlConnection.setRequestProperty("Authorization",
-                        String.format("Basic %s", DatatypeConverter.printBase64Binary(
+                        String.format("Basic %s", Base64.getEncoder().encodeToString(
                             url.getUserInfo().getBytes(StandardCharsets.UTF_8)
                     )));
                 }

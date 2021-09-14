@@ -6,7 +6,7 @@
 
     <groupId>com.github.slem1</groupId>
     <artifactId>await-maven-plugin</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
 
     <packaging>maven-plugin</packaging>
 
@@ -15,32 +15,17 @@
     <url>https://github.com/slem1/await-maven-plugin</url>
 
     <properties>
-        <maven-plugin-annotation.version>3.4</maven-plugin-annotation.version>
-        <maven-plugin-api.version>3.0</maven-plugin-api.version>
         <junit.version>4.12</junit.version>
-        <mockito-core.version>2.21.0</mockito-core.version>
+        <mockito.version>3.8.0</mockito.version>
         <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
-        <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <maven-plugin-annotation.version>3.4</maven-plugin-annotation.version>
+        <maven-plugin-api.version>3.0</maven-plugin-api.version>
+        <maven-plugin-plugin.version>3.6.0</maven-plugin-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jaxb-api.version>2.1.9</jaxb-api.version>
     </properties>
-
-    <scm>
-        <connection>scm:git:git://github.com/slem1/await-maven-plugin.git</connection>
-        <developerConnection>scm:git:ssh://github.com:slem1/await-maven-plugin.git</developerConnection>
-        <url>http://github.com/slem1/await-maven-plugin/tree/master</url>
-    </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencies>
 
@@ -72,8 +57,8 @@
 
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito-core.version}</version>
+            <artifactId>mockito-inline</artifactId>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -86,8 +71,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
 
@@ -140,47 +125,12 @@
                 </executions>
             </plugin>
 
-            <!-- maven deploy replacement -->
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>${nexus-staging-maven-plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>${maven-gpg-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${maven-plugin-plugin.version}</version>
             </plugin>
 
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>${coveralls-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
