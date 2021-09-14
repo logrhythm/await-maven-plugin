@@ -4,6 +4,7 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import java.util.Base64;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -87,6 +88,12 @@ public class HttpService implements Service {
             } else {
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestProperty("method", "GET");
+                if(null != url.getUserInfo()){
+                    urlConnection.setRequestProperty("Authorization",
+                        String.format("Basic %s", Base64.getEncoder().encodeToString(
+                            url.getUserInfo().getBytes(StandardCharsets.UTF_8)
+                    )));
+                }
             }
             urlConnection.connect();
 
